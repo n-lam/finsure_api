@@ -2,6 +2,11 @@ from rest_framework import serializers
 from .models import Lender
 
 
+class FileSerializer(serializers.Serializer):
+    # TODO: Add a max length
+    file = serializers.CharField()
+
+
 class LenderSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     created_at = serializers.DateTimeField(read_only=True)
