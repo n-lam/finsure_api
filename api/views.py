@@ -8,10 +8,21 @@ from .serializers import FileSerializer, LenderSerializer
 
 
 class LenderViewSet(viewsets.ModelViewSet):
+    """This creates both an admin view and the API routes.
+
+    I severely regret my choices of using the ModelViewSet for this... the API is pretty ugly
+    and there's a lot of black magic going on. Ideally, the API should have been something like:
+    `/api/lenders/<json|csv>`.
+    """
+
     queryset = Lender.objects.all()
     serializer_class = LenderSerializer
 
-    def list(self, request: HttpRequest):
+    def list(self, request: HttpRequest, format=None):
+        """This lists all the lenders in the database
+
+        `format` is needed since the ModelViewSet passed it in if a format suffix was specified.
+        """
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
 
