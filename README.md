@@ -86,3 +86,4 @@ curl http://localhost:8000/api/lenders/?filetype=csv
 - Create a file model which can handle the CSV file uploads (which could simplify the implementation since the LenderViewSet was a bit overloaded).
 - Add auto-generated API docs (using either Swagger or ReDoc - https://www.django-rest-framework.org/topics/documenting-your-api/)
 - Add authentication and authorisation.
+- Add test cases for the API
